@@ -107,6 +107,10 @@ resource "azurerm_linux_virtual_machine" "azure_spoke2_vm" {
   custom_data = base64encode(local.bu2_app_user_data)
 }
 
+resource "azurerm_resource_provider_registration" "dynatrace" {
+  name = "Dynatrace.Observability"
+}
+
 output "azure_spoke2_app_private_ip" {
   value = azurerm_linux_virtual_machine.azure_spoke2_vm.private_ip_address
 }
